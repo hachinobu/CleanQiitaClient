@@ -15,7 +15,7 @@ extension AppDelegate {
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
         guard
             let scheme = urlComponents?.scheme,
-            scheme.hasPrefix(Secrets.redirectUrlScheme),
+            scheme.hasPrefix(AuthInfo.redirectUrlScheme),
             let queryItems = urlComponents?.queryItems else {
             return
         }
@@ -27,7 +27,7 @@ extension AppDelegate {
             return queryInfo
         }
         
-        guard let code = queryInfo["code"], let state = queryInfo["state"], state == Secrets.accessTokenState else {
+        guard let code = queryInfo["code"], let state = queryInfo["state"], state == AuthInfo.accessTokenState else {
             return
         }
         
@@ -37,7 +37,7 @@ extension AppDelegate {
     }
     
     private func post(authorizeCodeInfo info: [AnyHashable : Any]?) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Secrets.accessTokenNotificationKey), object: nil, userInfo: info)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AuthInfo.accessTokenNotificationKey), object: nil, userInfo: info)
     }
     
 }

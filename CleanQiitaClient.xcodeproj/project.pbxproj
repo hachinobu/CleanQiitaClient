@@ -109,7 +109,7 @@
 		C2DC862B1D93DE02001B6072 /* Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = C2DC861B1D93DE02001B6072 /* Utility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2DC862E1D93DE02001B6072 /* Utility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DC86191D93DE02001B6072 /* Utility.framework */; };
 		C2DC862F1D93DE02001B6072 /* Utility.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C2DC86191D93DE02001B6072 /* Utility.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C2DC86371D93DF6F001B6072 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC86361D93DF6F001B6072 /* Secrets.swift */; };
+		C2DC86371D93DF6F001B6072 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC86361D93DF6F001B6072 /* AuthInfo.swift */; };
 		C2DC863B1D93E128001B6072 /* AccessTokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC863A1D93E128001B6072 /* AccessTokenEntity.swift */; };
 		C2DC86421D93E4CE001B6072 /* AuthNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC86411D93E4CE001B6072 /* AuthNetworkRequest.swift */; };
 /* End PBXBuildFile section */
@@ -360,7 +360,7 @@
 		C2DC86211D93DE02001B6072 /* UtilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DC86281D93DE02001B6072 /* UtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityTests.swift; sourceTree = "<group>"; };
 		C2DC862A1D93DE02001B6072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2DC86361D93DF6F001B6072 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		C2DC86361D93DF6F001B6072 /* AuthInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
 		C2DC863A1D93E128001B6072 /* AccessTokenEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenEntity.swift; sourceTree = "<group>"; };
 		C2DC86411D93E4CE001B6072 /* AuthNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNetworkRequest.swift; sourceTree = "<group>"; };
 		CE8EC2B075B36E28CBECF4D3 /* Pods-All-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-Networking/Pods-All-Networking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -847,7 +847,7 @@
 			children = (
 				C2DC861B1D93DE02001B6072 /* Utility.h */,
 				C2DC861C1D93DE02001B6072 /* Info.plist */,
-				C2DC86361D93DF6F001B6072 /* Secrets.swift */,
+				C2DC86361D93DF6F001B6072 /* AuthInfo.swift */,
 				C2A5E66C1D9431F800CAFEF0 /* AccessTokenStorage.swift */,
 				C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */,
 			);
@@ -1716,7 +1716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2DC86371D93DF6F001B6072 /* Secrets.swift in Sources */,
+				C2DC86371D93DF6F001B6072 /* AuthInfo.swift in Sources */,
 				C2A5E66D1D9431F800CAFEF0 /* AccessTokenStorage.swift in Sources */,
 				C26DA73D1D98EEFB00F26294 /* UIColorExtension.swift in Sources */,
 			);

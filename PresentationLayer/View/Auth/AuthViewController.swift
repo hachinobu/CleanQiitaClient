@@ -43,7 +43,7 @@ public class AuthViewController: UIViewController {
     }
     
     private func setupNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: .receiveAccessKey, name: NSNotification.Name(rawValue: Secrets.accessTokenNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: .receiveAccessKey, name: NSNotification.Name(rawValue: AuthInfo.accessTokenNotificationKey), object: nil)
     }
     
     @objc fileprivate func receiveOAuthCode(notification: Notification) {

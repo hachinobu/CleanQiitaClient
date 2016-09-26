@@ -30,12 +30,12 @@ public struct AuthPresenterImpl: AuthPresenter {
     }
     
     public func fetchOAuthCode() {
-        let url: String = "http://qiita.com/api/v2/oauth/authorize?client_id=\(Secrets.clientId)&scope=read_qiita+write_qiita&state=\(Secrets.accessTokenState)"
+        let url: String = "http://qiita.com/api/v2/oauth/authorize?client_id=\(AuthInfo.clientId)&scope=read_qiita+write_qiita&state=\(AuthInfo.accessTokenState)"
         UIApplication.shared.open(URL(string: url)!)
     }
     
     public func fetchAccessToken(with code: String) {
-        useCase.publishAccessToken(clientId: Secrets.clientId, clientSecret: Secrets.clientSecret, code: code) { result in
+        useCase.publishAccessToken(clientId: AuthInfo.clientId, clientSecret: AuthInfo.clientSecret, code: code) { result in
             guard let token = result.value?.token else {
                 return
             }
