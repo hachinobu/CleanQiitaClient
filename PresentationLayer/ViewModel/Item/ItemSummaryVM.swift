@@ -8,6 +8,7 @@
 
 import Foundation
 import DomainLayer
+import Utility
 
 protocol ItemSummaryProtocol {
     func tableRowCount() -> Int
@@ -81,9 +82,9 @@ extension ItemHeaderVM: ItemHeaderCellProtocol {
     
     func buttonColorInfo() -> (backgroundColor: UIColor, textColor: UIColor)? {
         if itemModel.hasStock {
-            return (UIColor.green, UIColor.white)
+            return (.qiitaMainColor(), .white)
         }
-        return (UIColor.white, UIColor.black)
+        return (.white, .black)
     }
     
 }

@@ -13,6 +13,8 @@
 		282F9C843F1ACF172248C44B /* Pods_All_DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9535709F6C2396522D78E27 /* Pods_All_DomainLayer.framework */; };
 		81BCCF43A88A8EEE8DB200EA /* Pods_All_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA88030460C840CC7BC9F9BF /* Pods_All_Networking.framework */; };
 		BEC5B5B5F1959BC811541877 /* Pods_All_Utility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C36176994D33E8FA86F0F2C /* Pods_All_Utility.framework */; };
+		C26DA73D1D98EEFB00F26294 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */; };
+		C26DA73F1D98EFFC00F26294 /* AppDelegate+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DA73E1D98EFFC00F26294 /* AppDelegate+Style.swift */; };
 		C26F8E071D95173300DB536B /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F8E061D95173300DB536B /* TagEntity.swift */; };
 		C26F8E091D9517A600DB536B /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F8E081D9517A600DB536B /* UserEntity.swift */; };
 		C26F8E0B1D95186500DB536B /* GroupEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F8E0A1D95186500DB536B /* GroupEntity.swift */; };
@@ -259,6 +261,8 @@
 		BA88030460C840CC7BC9F9BF /* Pods_All_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCDBF1BC4712A3C876CCB6A /* Pods-All-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Networking.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-Networking/Pods-All-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		C21C732EDF4326A8600D0B4D /* Pods-All-DomainLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-DomainLayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-DomainLayer/Pods-All-DomainLayer.release.xcconfig"; sourceTree = "<group>"; };
+		C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		C26DA73E1D98EFFC00F26294 /* AppDelegate+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Style.swift"; sourceTree = "<group>"; };
 		C26F8E061D95173300DB536B /* TagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		C26F8E081D9517A600DB536B /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		C26F8E0A1D95186500DB536B /* GroupEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEntity.swift; sourceTree = "<group>"; };
@@ -738,6 +742,7 @@
 			children = (
 				C2DC85631D93829C001B6072 /* AppDelegate.swift */,
 				C2A5E6761D94CB4200CAFEF0 /* AppDelegate+Auth.swift */,
+				C26DA73E1D98EFFC00F26294 /* AppDelegate+Style.swift */,
 				C2DC856A1D93829C001B6072 /* Assets.xcassets */,
 				C2DC856C1D93829C001B6072 /* LaunchScreen.storyboard */,
 				C2DC856F1D93829C001B6072 /* Info.plist */,
@@ -844,6 +849,7 @@
 				C2DC861C1D93DE02001B6072 /* Info.plist */,
 				C2DC86361D93DF6F001B6072 /* Secrets.swift */,
 				C2A5E66C1D9431F800CAFEF0 /* AccessTokenStorage.swift */,
+				C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1576,6 +1582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26DA73F1D98EFFC00F26294 /* AppDelegate+Style.swift in Sources */,
 				C2DC85641D93829C001B6072 /* AppDelegate.swift in Sources */,
 				C2A5E6771D94CB4200CAFEF0 /* AppDelegate+Auth.swift in Sources */,
 			);
@@ -1711,6 +1718,7 @@
 			files = (
 				C2DC86371D93DF6F001B6072 /* Secrets.swift in Sources */,
 				C2A5E66D1D9431F800CAFEF0 /* AccessTokenStorage.swift in Sources */,
+				C26DA73D1D98EEFB00F26294 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
