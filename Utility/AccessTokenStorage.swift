@@ -13,7 +13,8 @@ public struct AccessTokenStorage {
     private static let key: String = "accessToken"
     
     public static func fetch() -> String? {
-        if AuthInfo.clientId.isEmpty && AuthInfo.clientSecret.isEmpty {
+        let dummy = "hoge"
+        if AuthInfo.clientId == dummy && AuthInfo.clientSecret == dummy {
             return ""
         }
         return UserDefaults.standard.string(forKey: key)
