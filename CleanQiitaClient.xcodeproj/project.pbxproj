@@ -13,6 +13,7 @@
 		282F9C843F1ACF172248C44B /* Pods_All_DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9535709F6C2396522D78E27 /* Pods_All_DomainLayer.framework */; };
 		81BCCF43A88A8EEE8DB200EA /* Pods_All_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA88030460C840CC7BC9F9BF /* Pods_All_Networking.framework */; };
 		BEC5B5B5F1959BC811541877 /* Pods_All_Utility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C36176994D33E8FA86F0F2C /* Pods_All_Utility.framework */; };
+		C2415C151D9BDE3800E74862 /* ItemPresenterImplFromUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2415C141D9BDE3800E74862 /* ItemPresenterImplFromUserItem.swift */; };
 		C26DA73D1D98EEFB00F26294 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */; };
 		C26DA73F1D98EFFC00F26294 /* AppDelegate+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26DA73E1D98EFFC00F26294 /* AppDelegate+Style.swift */; };
 		C26F8E071D95173300DB536B /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F8E061D95173300DB536B /* TagEntity.swift */; };
@@ -261,6 +262,7 @@
 		BA88030460C840CC7BC9F9BF /* Pods_All_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCDBF1BC4712A3C876CCB6A /* Pods-All-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Networking.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-Networking/Pods-All-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		C21C732EDF4326A8600D0B4D /* Pods-All-DomainLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-DomainLayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-DomainLayer/Pods-All-DomainLayer.release.xcconfig"; sourceTree = "<group>"; };
+		C2415C141D9BDE3800E74862 /* ItemPresenterImplFromUserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPresenterImplFromUserItem.swift; sourceTree = "<group>"; };
 		C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C26DA73E1D98EFFC00F26294 /* AppDelegate+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Style.swift"; sourceTree = "<group>"; };
 		C26F8E061D95173300DB536B /* TagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 			children = (
 				C2B16DCE1D97B92400850090 /* ItemPresenter.swift */,
 				C2B16DD51D97C34100850090 /* ItemPresenterImplFromAllItem.swift */,
+				C2415C141D9BDE3800E74862 /* ItemPresenterImplFromUserItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1683,6 +1686,7 @@
 				C2B16DD11D97BE4A00850090 /* ItemBodyCell.swift in Sources */,
 				C2B16DD41D97BFFD00850090 /* ItemSummaryVM.swift in Sources */,
 				C26F8E241D95695D00DB536B /* ItemListViewController.swift in Sources */,
+				C2415C151D9BDE3800E74862 /* ItemPresenterImplFromUserItem.swift in Sources */,
 				C2B16DD81D97DAF600850090 /* ItemViewController.swift in Sources */,
 				C29DB3BE1D981C27005022C9 /* ItemRouting.swift in Sources */,
 			);

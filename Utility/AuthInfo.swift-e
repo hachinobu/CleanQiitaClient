@@ -10,8 +10,8 @@ import Foundation
 
 public struct AuthInfo {
     
-    public static let clientId: String = ""
-    public static let clientSecret: String = ""
+    public static let clientId: String = "hoge"
+    public static let clientSecret: String = "hoge"
     public static let accessTokenNotificationKey: String = "AccessTokenNotificationKey"
     public static let accessTokenState: String = "F355968FDEB05B26"
     public static let redirectUrlScheme: String = "clean-qiita-client"

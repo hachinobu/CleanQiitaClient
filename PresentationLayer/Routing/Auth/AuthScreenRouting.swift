@@ -32,7 +32,7 @@ public struct AuthScreenRoutingImpl: AuthScreenRouting {
         let navigationController = UIStoryboard(name: "ItemListScreen", bundle: Bundle(for: ItemListViewController.self)).instantiateInitialViewController() as! UINavigationController
         let viewController = navigationController.topViewController as! ItemListViewController
         
-        var routing = AllItemListRoutingImpl()
+        let routing = AllItemListRoutingImpl()
         routing.viewController = viewController
         viewController.injection(presenter: presenter, routing: routing)
         

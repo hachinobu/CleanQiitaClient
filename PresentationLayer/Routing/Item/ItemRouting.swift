@@ -14,7 +14,7 @@ protocol ItemRouting: Routing {
     func segueItemList(userId: String)
 }
 
-struct ItemRoutingImpl: ItemRouting {
+class ItemRoutingImpl: ItemRouting {
     
     weak var viewController: UIViewController? {
         didSet {
@@ -32,12 +32,21 @@ struct ItemRoutingImpl: ItemRouting {
         let navigationController = UIStoryboard(name: "ItemListScreen", bundle: Bundle(for: ItemListViewController.self)).instantiateInitialViewController() as! UINavigationController
         let vc = navigationController.topViewController as! ItemListViewController
         
-        var routing = AllItemListRoutingImpl()
+        let routing = UserItemListRoutingImpl()
         routing.viewController = vc
         vc.injection(presenter: presenter, routing: routing)
         
         viewController?.navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+}
+
+
+class UserItemRoutingImpl: ItemRoutingImpl {
+    
+    override func segueItemList(userId: String) {
+        let _ = viewController?.navigationController?.popViewController(animated: true)
     }
     
 }

@@ -15,7 +15,7 @@ protocol ItemListRouting: Routing {
     func presentErrorAlert(message: String)
 }
 
-struct AllItemListRoutingImpl: ItemListRouting {
+class AllItemListRoutingImpl: ItemListRouting {
     
     weak var viewController: UIViewController? {
         didSet {
@@ -39,7 +39,7 @@ struct AllItemListRoutingImpl: ItemListRouting {
         let presenter = ItemPresenterImplFromAllItem(useCase: useCase)
         
         let vc = UIStoryboard(name: "ItemScreen", bundle: Bundle(for: ItemViewController.self)).instantiateInitialViewController() as! ItemViewController
-        var routing = ItemRoutingImpl()
+        let routing = ItemRoutingImpl()
         routing.viewController = vc
         
         vc.injection(presenter: presenter, routing: routing)
@@ -52,6 +52,37 @@ struct AllItemListRoutingImpl: ItemListRouting {
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(action)
         viewController?.navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+class UserItemListRoutingImpl: AllItemListRoutingImpl {
+    
+    override func segueItem(id: String) {
+        
+        let stockersDataStore = StockersDataStoreNetworkImpl()
+        let stockersRepository = StockersRepositoryImpl(dataStore: stockersDataStore)
+        
+        let stockDataStore = StockItemDataStoreNetworkImpl()
+        let stockRepository = StockItemRepositoryImpl(dataStore: stockDataStore)
+        
+        let itemDataStore = ItemDataStoreNetworkImpl()
+        let itemRepository = ItemRepositoryImpl(dataStore: itemDataStore)
+        
+        let useCase = AllItemUseCaseImpl(stockItemRepository: stockRepository, stockersRepository: stockersRepository, itemRepository: itemRepository, itemId: id)
+        
+        //ItemPresenterImplFromUserItemを使うとタップした時にRoutingを呼ばないPresenter
+//        let presenter = ItemPresenterImplFromUserItem(useCase: useCase)
+        
+        let presenter = ItemPresenterImplFromAllItem(useCase: useCase)
+        
+        let vc = UIStoryboard(name: "ItemScreen", bundle: Bundle(for: ItemViewController.self)).instantiateInitialViewController() as! ItemViewController
+        let routing = UserItemRoutingImpl()
+        routing.viewController = vc
+        
+        vc.injection(presenter: presenter, routing: routing)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }
