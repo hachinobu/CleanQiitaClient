@@ -9,6 +9,9 @@
 import Foundation
 import DomainLayer
 import Kingfisher
+import Networking
+import APIKit
+import Result
 
 class AllItemListPresenterImpl: ItemListPresenter {
     
@@ -40,12 +43,19 @@ class AllItemListPresenterImpl: ItemListPresenter {
         
         let firstPage = 1
         useCase.fetchItemList(page: firstPage, perPage: perPage) { result in
-            guard let listItemModels = result.value else {
-                print(result.error)
-                return
+            
+            switch result {
+            case .success(let listItemModels):
+                self.currentPage = firstPage
+                self.listItemModels = listItemModels
+                
+            case .failure(.responseError(let qiitaError as QiitaError)):
+                self.view?.showErrorAlert(message: qiitaError.message)
+                
+            case .failure(let error):
+                self.view?.showErrorAlert(message: error.localizedDescription)
             }
-            self.currentPage = firstPage
-            self.listItemModels = listItemModels
+            
         }
     }
     

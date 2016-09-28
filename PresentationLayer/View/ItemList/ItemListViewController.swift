@@ -89,6 +89,11 @@ class ItemListViewController: UITableViewController {
 
 extension ItemListViewController: ItemListPresenterView {
     
+    func showErrorAlert(message: String) {
+        refreshControl?.endRefreshing()
+        routing.presentErrorAlert(message: message)
+    }
+    
     func setupNavigation(title: String) {
         self.title = title
     }

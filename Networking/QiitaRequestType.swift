@@ -12,7 +12,7 @@ import ObjectMapper
 import Utility
 
 public struct QiitaError: Error {
-    let message: String
+    public let message: String
     
     init(object: AnyObject) {
         message = object["message"] as? String ?? "Unknown Error"

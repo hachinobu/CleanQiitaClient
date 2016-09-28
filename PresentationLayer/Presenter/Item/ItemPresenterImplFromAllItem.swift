@@ -20,6 +20,12 @@ class ItemPresenterImplFromAllItem: ItemPresenter {
         self.useCase = useCase
     }
     
+    func setupUI() {
+        view?.setupNavigation(title: "投稿")
+        view?.setupTableSeparatorStyleNone()
+        view?.setupRefreshControl()
+    }
+    
     func refreshData() {
         useCase.fetchItem { [weak self] result in
             guard let itemModel = result.value else {
@@ -51,7 +57,6 @@ class ItemPresenterImplFromAllItem: ItemPresenter {
             }
             weakSelf.itemModel.updateHasStock(state: true)
             weakSelf.reloadView(itemModel: weakSelf.itemModel)
-            
         }
     }
     

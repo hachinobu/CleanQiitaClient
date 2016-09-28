@@ -12,6 +12,7 @@ protocol ItemPresenter {
     
     weak var view: ItemPresenterView? { get set }
     
+    func setupUI()
     func refreshData()
     func tappedStock()
     func tappedUser(userId: String)
@@ -20,6 +21,9 @@ protocol ItemPresenter {
 
 protocol ItemPresenterView: class {
     
+    func setupNavigation(title: String)
+    func setupTableSeparatorStyleNone()
+    func setupRefreshControl()
     func reloadView(itemSummaryVM: ItemSummaryProtocol)
     func segueItemListOfSelectedUser(userId: String)
     

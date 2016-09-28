@@ -12,6 +12,7 @@ import DomainLayer
 
 protocol ItemListRouting: Routing {
     func segueItem(id: String)
+    func presentErrorAlert(message: String)
 }
 
 struct AllItemListRoutingImpl: ItemListRouting {
@@ -44,6 +45,13 @@ struct AllItemListRoutingImpl: ItemListRouting {
         vc.injection(presenter: presenter, routing: routing)
         viewController?.navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    func presentErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        viewController?.navigationController?.present(alertController, animated: true, completion: nil)
     }
     
 }

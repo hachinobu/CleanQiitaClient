@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate extension Selector {
+    static let refreshAction = #selector(ItemViewController.refreshData)
+}
+
 class ItemViewController: UITableViewController {
 
     private var presenter: ItemPresenter! {
@@ -33,13 +37,17 @@ class ItemViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView(frame: .zero)
+        presenter.setupUI()
         presenter.refreshData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    func refreshData() {
+        presenter.refreshData()
     }
 
     // MARK: - Table view data source
@@ -85,6 +93,22 @@ class ItemViewController: UITableViewController {
 }
 
 extension ItemViewController: ItemPresenterView {
+    
+    func setupNavigation(title: String) {
+        self.title = title
+    }
+    
+    func setupTableSeparatorStyleNone() {
+        tableView.separatorStyle = .none
+    }
+    
+    func setupRefreshControl() {
+        guard refreshControl == nil else {
+            return
+        }
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: .refreshAction, for: .valueChanged)
+    }
     
     func reloadView(itemSummaryVM: ItemSummaryProtocol) {
         self.itemSummaryVM = itemSummaryVM

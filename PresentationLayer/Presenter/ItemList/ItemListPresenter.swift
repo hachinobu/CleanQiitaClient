@@ -22,6 +22,7 @@ public protocol ItemListPresenter {
 }
 
 public protocol ItemListPresenterView: class {
+    func showErrorAlert(message: String)
     func setupNavigation(title: String)
     func setupRefreshControl()
     func segueItemDetailScreen(itemId: String)
