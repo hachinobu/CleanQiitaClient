@@ -22,7 +22,7 @@ protocol ItemPresenter {
 protocol ItemPresenterView: class {
     
     func setupNavigation(title: String)
-    func setupTableSeparatorStyleNone()
+    func setupTable()
     func setupRefreshControl()
     func reloadView(itemSummaryVM: ItemSummaryProtocol)
     func segueItemListOfSelectedUser(userId: String)

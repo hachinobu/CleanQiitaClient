@@ -22,7 +22,7 @@ class ItemPresenterImplFromAllItem: ItemPresenter {
     
     func setupUI() {
         view?.setupNavigation(title: "投稿")
-        view?.setupTableSeparatorStyleNone()
+        view?.setupTable()
         view?.setupRefreshControl()
     }
     

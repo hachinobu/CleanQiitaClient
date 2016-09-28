@@ -98,8 +98,9 @@ extension ItemViewController: ItemPresenterView {
         self.title = title
     }
     
-    func setupTableSeparatorStyleNone() {
-        tableView.separatorStyle = .none
+    func setupTable() {
+        tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func setupRefreshControl() {
