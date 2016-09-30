@@ -16,13 +16,14 @@ public protocol ItemRepository {
 
 public struct ItemRepositoryImpl: ItemRepository {
     
-    let dataStore: ItemDataStore
+    public static let shared: ItemRepository = ItemRepositoryImpl()
     
-    public init(dataStore: ItemDataStore) {
-        self.dataStore = dataStore
+    init() {
+        
     }
     
     public func fetchItemDetail(itemId: String, handler: @escaping (Result<GetItemNetworkRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = ItemDataStoreFactory.fetchItemDataStore(type: .api)
         dataStore.fetchItemDetail(itemId: itemId, handler: handler)
     }
     

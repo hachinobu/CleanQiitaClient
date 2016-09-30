@@ -10,13 +10,13 @@ import Foundation
 import APIKit
 import Result
 
-public protocol StockItemDataStore {
+protocol StockItemDataStore {
     func hasStock(itemId: String, handler: @escaping (Result<GetHasStockRequest.Response, SessionTaskError>) -> Void)
     func putStock(itemId: String, handler: @escaping (Result<PutStockRequest.Response, SessionTaskError>) -> Void)
     func deleteStock(itemId: String, handler: @escaping (Result<DeleteStockRequest.Response, SessionTaskError>) -> Void)
 }
 
-public struct StockItemDataStoreNetworkImpl: StockItemDataStore {
+struct StockItemDataStoreNetworkImpl: StockItemDataStore {
     
     public init() {
         
@@ -35,6 +35,19 @@ public struct StockItemDataStoreNetworkImpl: StockItemDataStore {
     public func deleteStock(itemId: String, handler: @escaping (Result<DeleteStockRequest.Response, SessionTaskError>) -> Void) {
         let request = DeleteStockRequest(itemId: itemId)
         Session.send(request, callbackQueue: nil, handler: handler)
+    }
+    
+}
+
+struct StockItemDataStoreFactory {
+    
+    static func fetchStockItemDataStore(from: AcquisitionType) -> StockItemDataStore {
+        switch from {
+        case .api:
+            return StockItemDataStoreNetworkImpl()
+        case .db:
+            return StockItemDataStoreNetworkImpl()
+        }
     }
     
 }

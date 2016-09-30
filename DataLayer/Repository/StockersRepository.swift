@@ -16,13 +16,14 @@ public protocol StockersRepository {
 
 public struct StockersRepositoryImpl: StockersRepository {
     
-    let dataStore: StockersDataStore
+    public static let shared: StockersRepository = StockersRepositoryImpl()
     
-    public init(dataStore: StockersDataStore) {
-        self.dataStore = dataStore
+    init() {
+        
     }
     
     public func fetchStockers(itemId: String, handler: @escaping (Result<GetItemStockersRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = StockersDataStoreFactory.fetchStockersDataStore(type: .api)
         dataStore.fetchStockers(itemId: itemId, handler: handler)
     }
     

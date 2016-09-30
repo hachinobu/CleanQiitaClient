@@ -25,15 +25,9 @@ class AllItemListRoutingImpl: ItemListRouting {
     
     func segueItem(id: String) {
         
-        let stockersDataStore = StockersDataStoreNetworkImpl()
-        let stockersRepository = StockersRepositoryImpl(dataStore: stockersDataStore)
-        
-        let stockDataStore = StockItemDataStoreNetworkImpl()
-        let stockRepository = StockItemRepositoryImpl(dataStore: stockDataStore)
-        
-        let itemDataStore = ItemDataStoreNetworkImpl()
-        let itemRepository = ItemRepositoryImpl(dataStore: itemDataStore)
-        
+        let stockersRepository = StockersRepositoryImpl.shared
+        let stockRepository = StockItemRepositoryImpl.shared
+        let itemRepository = ItemRepositoryImpl.shared
         let useCase = AllItemUseCaseImpl(stockItemRepository: stockRepository, stockersRepository: stockersRepository, itemRepository: itemRepository, itemId: id)
         
         let presenter = ItemPresenterImplFromAllItem(useCase: useCase)
@@ -60,15 +54,9 @@ class UserItemListRoutingImpl: AllItemListRoutingImpl {
     
     override func segueItem(id: String) {
         
-        let stockersDataStore = StockersDataStoreNetworkImpl()
-        let stockersRepository = StockersRepositoryImpl(dataStore: stockersDataStore)
-        
-        let stockDataStore = StockItemDataStoreNetworkImpl()
-        let stockRepository = StockItemRepositoryImpl(dataStore: stockDataStore)
-        
-        let itemDataStore = ItemDataStoreNetworkImpl()
-        let itemRepository = ItemRepositoryImpl(dataStore: itemDataStore)
-        
+        let stockersRepository = StockersRepositoryImpl.shared
+        let stockRepository = StockItemRepositoryImpl.shared
+        let itemRepository = ItemRepositoryImpl.shared
         let useCase = AllItemUseCaseImpl(stockItemRepository: stockRepository, stockersRepository: stockersRepository, itemRepository: itemRepository, itemId: id)
         
         //ItemPresenterImplFromUserItemを使うとタップした時にRoutingを呼ばないPresenter

@@ -10,19 +10,29 @@ import Foundation
 import Result
 import APIKit
 
-public protocol ItemDataStore {
+protocol ItemDataStore {
     func fetchItemDetail(itemId: String, handler: @escaping (Result<GetItemNetworkRequest.Response, SessionTaskError>) -> Void)
 }
 
-public struct ItemDataStoreNetworkImpl: ItemDataStore {
-    
-    public init() {
-        
-    }
+struct ItemDataStoreNetworkImpl: ItemDataStore {
     
     public func fetchItemDetail(itemId: String, handler: @escaping (Result<GetItemNetworkRequest.Response, SessionTaskError>) -> Void) {
         let request = GetItemNetworkRequest(itemId: itemId)
         Session.send(request, callbackQueue: nil, handler: handler)
+    }
+    
+}
+
+
+struct ItemDataStoreFactory {
+    
+    static func fetchItemDataStore(type: AcquisitionType) -> ItemDataStore {
+        switch type {
+        case .api:
+            return ItemDataStoreNetworkImpl()
+        case .db:
+            return ItemDataStoreNetworkImpl()
+        }
     }
     
 }

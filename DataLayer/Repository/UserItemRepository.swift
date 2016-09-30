@@ -16,13 +16,14 @@ public protocol UserItemRepository {
 
 public struct UserItemRepositoryImpl: UserItemRepository {
     
-    let dataStore: UserItemDataStore
+    public static let shared: UserItemRepository = UserItemRepositoryImpl()
     
-    public init(dataStore: UserItemDataStore) {
-        self.dataStore = dataStore
+    init() {
+        
     }
     
     public func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = UserItemDataStoreFactory.fetchUserItemDataStore(from: .api)
         dataStore.fetchUserItemList(page: page, perPage: perPage, userId: userId, handler: handler)
     }
     

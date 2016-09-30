@@ -18,21 +18,24 @@ public protocol StockItemRepository {
 
 public struct StockItemRepositoryImpl: StockItemRepository {
     
-    let dataStore: StockItemDataStore
+    public static let shared: StockItemRepository = StockItemRepositoryImpl()
     
-    public init(dataStore: StockItemDataStore) {
-        self.dataStore = dataStore
+    init() {
+        
     }
     
     public func hasStock(itemId: String, handler: @escaping (Result<GetHasStockRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = StockItemDataStoreFactory.fetchStockItemDataStore(from: .api)
         dataStore.hasStock(itemId: itemId, handler: handler)
     }
 
     public func putStock(itemId: String, handler: @escaping (Result<PutStockRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = StockItemDataStoreFactory.fetchStockItemDataStore(from: .api)
         dataStore.putStock(itemId: itemId, handler: handler)
     }
     
     public func deleteStock(itemId: String, handler: @escaping (Result<DeleteStockRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = StockItemDataStoreFactory.fetchStockItemDataStore(from: .api)
         dataStore.deleteStock(itemId: itemId, handler: handler)
     }
     

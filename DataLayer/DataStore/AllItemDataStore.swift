@@ -10,19 +10,32 @@ import Foundation
 import APIKit
 import Result
 
-public protocol AllItemDataStore {
+protocol AllItemDataStore {
     func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void)
 }
 
-public struct AllItemDataStoreNetworkImpl: AllItemDataStore {
+struct AllItemDataStoreNetworkImpl: AllItemDataStore {
     
-    public init() {
+    init() {
         
     }
     
-    public func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void) {
+    func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void) {
         let request = GetAllItemListRequest(page: page, perPage: perPage)
         Session.send(request, callbackQueue: nil, handler: handler)
+    }
+    
+}
+
+struct AllItemDataStoreFactory {
+    
+    static func fetchAllItemDataStore(type: AcquisitionType) -> AllItemDataStore {
+        switch type {
+        case .api:
+            return AllItemDataStoreNetworkImpl()
+        case .db:
+            return AllItemDataStoreNetworkImpl()
+        }
     }
     
 }

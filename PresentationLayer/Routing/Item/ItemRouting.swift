@@ -24,8 +24,7 @@ class ItemRoutingImpl: ItemRouting {
     
     func segueItemList(userId: String) {
         
-        let dataStore = UserItemDataStoreNetworkImpl()
-        let repository = UserItemRepositoryImpl(dataStore: dataStore)
+        let repository = UserItemRepositoryImpl.shared
         let useCase = UserItemListUseCaseImpl(repository: repository, userId: userId)
         let presenter = UserItemListPresenterImpl(useCase: useCase)
         

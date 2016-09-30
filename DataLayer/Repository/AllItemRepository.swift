@@ -16,13 +16,14 @@ public protocol AllItemRepository {
 
 public struct AllItemRepositoryImpl: AllItemRepository {
     
-    private let dataStore: AllItemDataStore
+    public static let shared: AllItemRepositoryImpl = AllItemRepositoryImpl()
     
-    public init(dataStore: AllItemDataStore) {
-        self.dataStore = dataStore
+    private init() {
+        
     }
     
     public func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void) {
+        let dataStore = AllItemDataStoreFactory.fetchAllItemDataStore(type: .api)
         dataStore.fetchAllItemList(page: page, perPage: perPage, handler: handler)
     }
     

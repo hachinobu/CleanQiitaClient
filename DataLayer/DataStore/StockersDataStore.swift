@@ -10,11 +10,11 @@ import Foundation
 import APIKit
 import Result
 
-public protocol StockersDataStore {
+protocol StockersDataStore {
     func fetchStockers(itemId: String, handler: @escaping (Result<GetItemStockersRequest.Response, SessionTaskError>) -> Void)
 }
 
-public struct StockersDataStoreNetworkImpl: StockersDataStore {
+struct StockersDataStoreNetworkImpl: StockersDataStore {
     
     public init() {
         
@@ -23,6 +23,19 @@ public struct StockersDataStoreNetworkImpl: StockersDataStore {
     public func fetchStockers(itemId: String, handler: @escaping (Result<GetItemStockersRequest.Response, SessionTaskError>) -> Void) {
         let request = GetItemStockersRequest(itemId: itemId)
         Session.send(request, callbackQueue: nil, handler: handler)
+    }
+    
+}
+
+struct StockersDataStoreFactory {
+    
+    static func fetchStockersDataStore(type: AcquisitionType) -> StockersDataStore {
+        switch type {
+        case .api:
+            return StockersDataStoreNetworkImpl()
+        case .db:
+            return StockersDataStoreNetworkImpl()
+        }
     }
     
 }

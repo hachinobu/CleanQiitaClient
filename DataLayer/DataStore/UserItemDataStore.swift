@@ -10,11 +10,11 @@ import Foundation
 import APIKit
 import Result
 
-public protocol UserItemDataStore {
+protocol UserItemDataStore {
     func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void)
 }
 
-public struct UserItemDataStoreNetworkImpl: UserItemDataStore {
+struct UserItemDataStoreNetworkImpl: UserItemDataStore {
     
     public init() {
         
@@ -23,6 +23,19 @@ public struct UserItemDataStoreNetworkImpl: UserItemDataStore {
     public func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void) {
         let request = GetUserItemListRequest(page: page, perPage: perPage, userId: userId)
         Session.send(request, callbackQueue: nil, handler: handler)
+    }
+    
+}
+
+struct UserItemDataStoreFactory {
+    
+    static func fetchUserItemDataStore(from: AcquisitionType) -> UserItemDataStore {
+        switch from {
+        case .api:
+            return UserItemDataStoreNetworkImpl()
+        case .db:
+            return UserItemDataStoreNetworkImpl()
+        }
     }
     
 }
