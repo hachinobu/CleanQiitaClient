@@ -8,6 +8,7 @@
 
 import UIKit
 import DomainLayer
+import Utility
 
 fileprivate extension Selector {
     static let refreshAction = #selector(ItemListViewController.refreshData)
@@ -61,7 +62,7 @@ class ItemListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListItemCell.identifier, for: indexPath) as! ListItemCell
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ListItemCell
         let displayItemVM = itemListSummaryVM.fetchListItemDisplayProtocol(index: indexPath.row)
         cell.setupContents(displayVM: displayItemVM)
         

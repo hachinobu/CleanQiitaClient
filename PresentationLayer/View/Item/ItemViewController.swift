@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Utility
 
 fileprivate extension Selector {
     static let refreshAction = #selector(ItemViewController.refreshData)
@@ -66,15 +67,16 @@ class ItemViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemHeaderCell", for: indexPath) as! ItemHeaderCell
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ItemHeaderCell
             cell.presenter = presenter
             cell.vm = itemSummaryVM.fetchItemHeaderVM()
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemBodyCell", for: indexPath) as! ItemBodyCell
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ItemBodyCell
         cell.itemBodyWebView.delegate = self
         cell.vm = itemSummaryVM.fetchItemBodyVM()
+        
         return cell
     }
     

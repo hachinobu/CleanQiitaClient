@@ -19,8 +19,6 @@ public protocol ListItemDisplayProtocol {
 
 class ListItemCell: UITableViewCell {
 
-    static let identifier: String = "ListItemCell"
-    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var postUserLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!

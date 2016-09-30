@@ -113,6 +113,9 @@
 		C2DC86371D93DF6F001B6072 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC86361D93DF6F001B6072 /* AuthInfo.swift */; };
 		C2DC863B1D93E128001B6072 /* AccessTokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC863A1D93E128001B6072 /* AccessTokenEntity.swift */; };
 		C2DC86421D93E4CE001B6072 /* AuthNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC86411D93E4CE001B6072 /* AuthNetworkRequest.swift */; };
+		C2F7D4AC1D9E3BEA00B58347 /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4AB1D9E3BEA00B58347 /* NibLoadableView.swift */; };
+		C2F7D4AE1D9E3C0C00B58347 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4AD1D9E3C0C00B58347 /* ReusableView.swift */; };
+		C2F7D4B01D9E3CAF00B58347 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4AF1D9E3CAF00B58347 /* UITableViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -365,6 +368,9 @@
 		C2DC86361D93DF6F001B6072 /* AuthInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
 		C2DC863A1D93E128001B6072 /* AccessTokenEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenEntity.swift; sourceTree = "<group>"; };
 		C2DC86411D93E4CE001B6072 /* AuthNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNetworkRequest.swift; sourceTree = "<group>"; };
+		C2F7D4AB1D9E3BEA00B58347 /* NibLoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
+		C2F7D4AD1D9E3C0C00B58347 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		C2F7D4AF1D9E3CAF00B58347 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		CE8EC2B075B36E28CBECF4D3 /* Pods-All-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-Networking/Pods-All-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 		EB10BA215D8AC21860EB76E4 /* Pods-All-CleanQiitaClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-CleanQiitaClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-CleanQiitaClient/Pods-All-CleanQiitaClient.debug.xcconfig"; sourceTree = "<group>"; };
 		EF1DF87C3731925C9251966A /* Pods_All_DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -848,11 +854,13 @@
 		C2DC861A1D93DE02001B6072 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				C2F7D4AA1D9E3BCB00B58347 /* Protocol */,
 				C2DC861B1D93DE02001B6072 /* Utility.h */,
 				C2DC861C1D93DE02001B6072 /* Info.plist */,
 				C2DC86361D93DF6F001B6072 /* AuthInfo.swift */,
 				C2A5E66C1D9431F800CAFEF0 /* AccessTokenStorage.swift */,
 				C26DA73C1D98EEFB00F26294 /* UIColorExtension.swift */,
+				C2F7D4AF1D9E3CAF00B58347 /* UITableViewExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -903,6 +911,15 @@
 				C2BDD54B1D98116B00059D0F /* UserItemNetworkRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		C2F7D4AA1D9E3BCB00B58347 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C2F7D4AB1D9E3BEA00B58347 /* NibLoadableView.swift */,
+				C2F7D4AD1D9E3C0C00B58347 /* ReusableView.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1720,7 +1737,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F7D4AC1D9E3BEA00B58347 /* NibLoadableView.swift in Sources */,
+				C2F7D4AE1D9E3C0C00B58347 /* ReusableView.swift in Sources */,
 				C2DC86371D93DF6F001B6072 /* AuthInfo.swift in Sources */,
+				C2F7D4B01D9E3CAF00B58347 /* UITableViewExtension.swift in Sources */,
 				C2A5E66D1D9431F800CAFEF0 /* AccessTokenStorage.swift in Sources */,
 				C26DA73D1D98EEFB00F26294 /* UIColorExtension.swift in Sources */,
 			);
