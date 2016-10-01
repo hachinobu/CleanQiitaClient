@@ -4,7 +4,7 @@ use_frameworks!
 
 abstract_target 'All' do
 
-  pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit', :branch => 'apikit-3-migration-guide'
+  pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit', :tag => '3.0.0-beta.2'
   pod "PromiseKit", "~> 4.0"
   pod 'ObjectMapper'
   pod 'Kingfisher'
