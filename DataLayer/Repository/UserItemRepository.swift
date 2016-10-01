@@ -18,12 +18,8 @@ public struct UserItemRepositoryImpl: UserItemRepository {
     
     public static let shared: UserItemRepository = UserItemRepositoryImpl()
     
-    init() {
-        
-    }
-    
     public func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void) {
-        let dataStore = UserItemDataStoreFactory.fetchUserItemDataStore(from: .api)
+        let dataStore = UserItemDataStoreFactory.createUserItemDataStore()
         dataStore.fetchUserItemList(page: page, perPage: perPage, userId: userId, handler: handler)
     }
     

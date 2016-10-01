@@ -16,10 +16,6 @@ protocol StockersDataStore {
 
 struct StockersDataStoreNetworkImpl: StockersDataStore {
     
-    public init() {
-        
-    }
-    
     public func fetchStockers(itemId: String, handler: @escaping (Result<GetItemStockersRequest.Response, SessionTaskError>) -> Void) {
         let request = GetItemStockersRequest(itemId: itemId)
         Session.send(request, callbackQueue: nil, handler: handler)
@@ -29,13 +25,8 @@ struct StockersDataStoreNetworkImpl: StockersDataStore {
 
 struct StockersDataStoreFactory {
     
-    static func fetchStockersDataStore(type: AcquisitionType) -> StockersDataStore {
-        switch type {
-        case .api:
-            return StockersDataStoreNetworkImpl()
-        case .db:
-            return StockersDataStoreNetworkImpl()
-        }
+    static func createStockersDataStore() -> StockersDataStore {
+        return StockersDataStoreNetworkImpl()
     }
     
 }

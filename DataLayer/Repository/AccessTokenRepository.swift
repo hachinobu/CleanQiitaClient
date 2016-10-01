@@ -15,17 +15,15 @@ public protocol AccessTokenRepository {
 
 public struct AccessTokenRepositoryImpl: AccessTokenRepository {
     
-    public let dataStore: AccessTokenDataStore
-    
-    public init(dataStore: AccessTokenDataStore) {
-        self.dataStore = dataStore
-    }
+    public static let shared: AccessTokenRepositoryImpl = AccessTokenRepositoryImpl()
     
     public func save(accessToken: String, handler: (Bool) -> Void) {
+        let dataStore = AccessTokenDataStoreFactory.createAccessTokenDataStore()
         dataStore.save(accessToken: accessToken, handler: handler)
     }
     
     public func alreadyHasToken(handler: (Bool) -> Void) {
+        let dataStore = AccessTokenDataStoreFactory.createAccessTokenDataStore()
         dataStore.alreadyHasToken(handler: handler)
     }
     

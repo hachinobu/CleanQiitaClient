@@ -16,10 +16,6 @@ protocol AllItemDataStore {
 
 struct AllItemDataStoreNetworkImpl: AllItemDataStore {
     
-    init() {
-        
-    }
-    
     func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void) {
         let request = GetAllItemListRequest(page: page, perPage: perPage)
         Session.send(request, callbackQueue: nil, handler: handler)
@@ -29,13 +25,8 @@ struct AllItemDataStoreNetworkImpl: AllItemDataStore {
 
 struct AllItemDataStoreFactory {
     
-    static func fetchAllItemDataStore(type: AcquisitionType) -> AllItemDataStore {
-        switch type {
-        case .api:
-            return AllItemDataStoreNetworkImpl()
-        case .db:
-            return AllItemDataStoreNetworkImpl()
-        }
+    static func createAllItemDataStore() -> AllItemDataStore {
+        return AllItemDataStoreNetworkImpl()
     }
     
 }

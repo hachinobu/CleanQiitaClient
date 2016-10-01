@@ -19,11 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var authScreen: UIViewController {
         
-        let authDataStore = AuthDataStoreNetworkImpl()
-        let authRepository = AuthRepositoryImpl(dataStore: authDataStore)
-        
-        let tokenDataStore = AccessTokenDataStoreImpl()
-        let tokenRepository = AccessTokenRepositoryImpl(dataStore: tokenDataStore)
+        let authRepository = AuthRepositoryImpl.shared
+        let tokenRepository = AccessTokenRepositoryImpl.shared
         
         let useCase = AuthUseCaseImpl(authRepository: authRepository, accessTokenRepository: tokenRepository)
         let presenter = AuthPresenterImpl(useCase: useCase)

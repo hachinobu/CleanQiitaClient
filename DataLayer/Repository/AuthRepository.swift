@@ -16,16 +16,11 @@ public protocol AuthRepository {
 
 public struct AuthRepositoryImpl: AuthRepository {
     
-    private let dataStore: AuthDataStore
-    
-    public init(dataStore: AuthDataStore) {
-        self.dataStore = dataStore
-    }
+    public static let shared: AuthRepositoryImpl = AuthRepositoryImpl()
     
     public func publishAccessToken(clientId: String, clientSecret: String, code: String, handler: @escaping (Result<PublishAccessTokenNetworkRequest.Response, SessionTaskError>) -> ()) {
-        
+        let dataStore = AuthDataStoreFactory.createAuthDataStore()
         dataStore.publishAccessToken(clientId: clientId, clientSecret: clientSecret, code: code, handler: handler)
-        
     }
     
 }

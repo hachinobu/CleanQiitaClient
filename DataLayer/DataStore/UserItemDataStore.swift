@@ -16,10 +16,6 @@ protocol UserItemDataStore {
 
 struct UserItemDataStoreNetworkImpl: UserItemDataStore {
     
-    public init() {
-        
-    }
-    
     public func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void) {
         let request = GetUserItemListRequest(page: page, perPage: perPage, userId: userId)
         Session.send(request, callbackQueue: nil, handler: handler)
@@ -29,13 +25,8 @@ struct UserItemDataStoreNetworkImpl: UserItemDataStore {
 
 struct UserItemDataStoreFactory {
     
-    static func fetchUserItemDataStore(from: AcquisitionType) -> UserItemDataStore {
-        switch from {
-        case .api:
-            return UserItemDataStoreNetworkImpl()
-        case .db:
-            return UserItemDataStoreNetworkImpl()
-        }
+    static func createUserItemDataStore() -> UserItemDataStore {
+        return UserItemDataStoreNetworkImpl()
     }
     
 }

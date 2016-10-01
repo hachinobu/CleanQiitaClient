@@ -18,12 +18,8 @@ public struct AllItemRepositoryImpl: AllItemRepository {
     
     public static let shared: AllItemRepositoryImpl = AllItemRepositoryImpl()
     
-    private init() {
-        
-    }
-    
     public func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void) {
-        let dataStore = AllItemDataStoreFactory.fetchAllItemDataStore(type: .api)
+        let dataStore = AllItemDataStoreFactory.createAllItemDataStore()
         dataStore.fetchAllItemList(page: page, perPage: perPage, handler: handler)
     }
     

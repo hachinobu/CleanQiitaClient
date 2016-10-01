@@ -26,13 +26,8 @@ struct ItemDataStoreNetworkImpl: ItemDataStore {
 
 struct ItemDataStoreFactory {
     
-    static func fetchItemDataStore(type: AcquisitionType) -> ItemDataStore {
-        switch type {
-        case .api:
-            return ItemDataStoreNetworkImpl()
-        case .db:
-            return ItemDataStoreNetworkImpl()
-        }
+    static func createItemDataStore() -> ItemDataStore {
+        return ItemDataStoreNetworkImpl()
     }
     
 }

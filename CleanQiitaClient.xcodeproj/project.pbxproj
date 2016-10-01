@@ -116,7 +116,6 @@
 		C2F7D4AC1D9E3BEA00B58347 /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4AB1D9E3BEA00B58347 /* NibLoadableView.swift */; };
 		C2F7D4AE1D9E3C0C00B58347 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4AD1D9E3C0C00B58347 /* ReusableView.swift */; };
 		C2F7D4B01D9E3CAF00B58347 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4AF1D9E3CAF00B58347 /* UITableViewExtension.swift */; };
-		C2F7D4B41D9E4DE900B58347 /* AcquisitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7D4B31D9E4DE900B58347 /* AcquisitionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,7 +371,6 @@
 		C2F7D4AB1D9E3BEA00B58347 /* NibLoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
 		C2F7D4AD1D9E3C0C00B58347 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		C2F7D4AF1D9E3CAF00B58347 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		C2F7D4B31D9E4DE900B58347 /* AcquisitionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcquisitionType.swift; sourceTree = "<group>"; };
 		CE8EC2B075B36E28CBECF4D3 /* Pods-All-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-Networking/Pods-All-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 		EB10BA215D8AC21860EB76E4 /* Pods-All-CleanQiitaClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-CleanQiitaClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-CleanQiitaClient/Pods-All-CleanQiitaClient.debug.xcconfig"; sourceTree = "<group>"; };
 		EF1DF87C3731925C9251966A /* Pods_All_DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -887,7 +885,6 @@
 				C2B16DB91D9658C100850090 /* StockersDataStore.swift */,
 				C2B16DBD1D965C1B00850090 /* StockItemDataStore.swift */,
 				C2BDD54D1D98134500059D0F /* UserItemDataStore.swift */,
-				C2F7D4B31D9E4DE900B58347 /* AcquisitionType.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -1638,7 +1635,6 @@
 				C2B16DB21D9651F700850090 /* ItemNetworkRequest.swift in Sources */,
 				C26F8E111D9521A900DB536B /* AllItemDataStore.swift in Sources */,
 				C26F8E131D9524B900DB536B /* AuthDataStore.swift in Sources */,
-				C2F7D4B41D9E4DE900B58347 /* AcquisitionType.swift in Sources */,
 				C26F8E0B1D95186500DB536B /* GroupEntity.swift in Sources */,
 				C26F8E151D9525BB00DB536B /* AuthRepository.swift in Sources */,
 				C2BDD5501D98144D00059D0F /* UserItemRepository.swift in Sources */,

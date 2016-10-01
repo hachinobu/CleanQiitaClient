@@ -18,12 +18,8 @@ public struct ItemRepositoryImpl: ItemRepository {
     
     public static let shared: ItemRepository = ItemRepositoryImpl()
     
-    init() {
-        
-    }
-    
     public func fetchItemDetail(itemId: String, handler: @escaping (Result<GetItemNetworkRequest.Response, SessionTaskError>) -> Void) {
-        let dataStore = ItemDataStoreFactory.fetchItemDataStore(type: .api)
+        let dataStore = ItemDataStoreFactory.createItemDataStore()
         dataStore.fetchItemDetail(itemId: itemId, handler: handler)
     }
     

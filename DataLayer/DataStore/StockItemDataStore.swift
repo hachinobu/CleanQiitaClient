@@ -18,10 +18,6 @@ protocol StockItemDataStore {
 
 struct StockItemDataStoreNetworkImpl: StockItemDataStore {
     
-    public init() {
-        
-    }
-    
     public func hasStock(itemId: String, handler: @escaping (Result<GetHasStockRequest.Response, SessionTaskError>) -> Void) {
         let request = GetHasStockRequest(itemId: itemId)
         Session.send(request, callbackQueue: nil, handler: handler)
@@ -41,13 +37,12 @@ struct StockItemDataStoreNetworkImpl: StockItemDataStore {
 
 struct StockItemDataStoreFactory {
     
-    static func fetchStockItemDataStore(from: AcquisitionType) -> StockItemDataStore {
-        switch from {
-        case .api:
-            return StockItemDataStoreNetworkImpl()
-        case .db:
-            return StockItemDataStoreNetworkImpl()
-        }
+    static func createStockItemDataStore() -> StockItemDataStore {
+        return StockItemDataStoreNetworkImpl()
+    }
+    
+    static func createStockItemDataStoreNetworkImpl() -> StockItemDataStore {
+        return StockItemDataStoreNetworkImpl()
     }
     
 }

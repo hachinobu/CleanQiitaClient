@@ -18,12 +18,8 @@ public struct StockersRepositoryImpl: StockersRepository {
     
     public static let shared: StockersRepository = StockersRepositoryImpl()
     
-    init() {
-        
-    }
-    
     public func fetchStockers(itemId: String, handler: @escaping (Result<GetItemStockersRequest.Response, SessionTaskError>) -> Void) {
-        let dataStore = StockersDataStoreFactory.fetchStockersDataStore(type: .api)
+        let dataStore = StockersDataStoreFactory.createStockersDataStore()
         dataStore.fetchStockers(itemId: itemId, handler: handler)
     }
     

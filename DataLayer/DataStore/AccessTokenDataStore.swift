@@ -9,16 +9,12 @@
 import Foundation
 import Utility
 
-public protocol AccessTokenDataStore {
+protocol AccessTokenDataStore {
     func save(accessToken: String, handler: (_ isSuccess: Bool) -> Void)
     func alreadyHasToken(handler: (_ hasToken: Bool) -> Void)
 }
 
-public struct AccessTokenDataStoreImpl: AccessTokenDataStore {
-    
-    public init() {
-        
-    }
+struct AccessTokenDataStoreImpl: AccessTokenDataStore {
     
     public func save(accessToken: String, handler: (Bool) -> Void) {
         let result = AccessTokenStorage.save(accesToken: accessToken)
@@ -26,8 +22,16 @@ public struct AccessTokenDataStoreImpl: AccessTokenDataStore {
     }
     
     public func alreadyHasToken(handler: (Bool) -> Void) {
-        let result = AccessTokenStorage.fetch() != nil ? true : false
+        let result = AccessTokenStorage.fetch() != nil
         handler(result)
     }
 
+}
+
+struct AccessTokenDataStoreFactory {
+    
+    static func createAccessTokenDataStore() -> AccessTokenDataStore {
+        return AccessTokenDataStoreImpl()
+    }
+    
 }
