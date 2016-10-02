@@ -24,7 +24,7 @@ public struct AuthScreenRoutingImpl: AuthScreenRouting {
     
     public func segueAllItemListScreen() {
         
-        let repository = AllItemRepositoryImpl.shared
+        let repository = ItemListRepositoryImpl.shared
         let useCase = AllItemListUseCaseImpl(repository: repository)
         let presenter = AllItemListPresenterImpl(useCase: useCase)
         

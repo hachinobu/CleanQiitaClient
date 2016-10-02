@@ -1,5 +1,5 @@
 //
-//  AllItemDataStore.swift
+//  ItemListDataStore.swift
 //  CleanQiitaClient
 //
 //  Created by Takahiro Nishinobu on 2016/09/23.
@@ -10,11 +10,11 @@ import Foundation
 import APIKit
 import Result
 
-protocol AllItemDataStore {
+protocol ItemListDataStore {
     func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void)
 }
 
-struct AllItemDataStoreNetworkImpl: AllItemDataStore {
+struct ItemListDataStoreNetworkImpl: ItemListDataStore {
     
     func fetchAllItemList(page: Int?, perPage: Int?, handler: @escaping (Result<GetAllItemListRequest.Response, SessionTaskError>) -> Void) {
         let request = GetAllItemListRequest(page: page, perPage: perPage)
@@ -23,10 +23,10 @@ struct AllItemDataStoreNetworkImpl: AllItemDataStore {
     
 }
 
-struct AllItemDataStoreFactory {
+struct ItemListDataStoreFactory {
     
-    static func createAllItemDataStore() -> AllItemDataStore {
-        return AllItemDataStoreNetworkImpl()
+    static func createItemListDataStore() -> ItemListDataStore {
+        return ItemListDataStoreNetworkImpl()
     }
     
 }

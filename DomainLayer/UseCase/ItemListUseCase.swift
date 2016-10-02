@@ -17,15 +17,15 @@ public protocol ItemListUseCase {
 
 public struct AllItemListUseCaseImpl: ItemListUseCase {
     
-    let repository: AllItemRepository
+    let repository: ItemListRepository
     
-    public init(repository: AllItemRepository) {
+    public init(repository: ItemListRepository) {
         self.repository = repository
     }
     
     public func fetchItemList(page: Int?, perPage: Int?, handler: @escaping (Result<[ListItemModel], SessionTaskError>) -> Void) {
         
-        repository.fetchAllItemList(page: page, perPage: perPage) { result in
+        repository.fetchItemList(page: page, perPage: perPage) { result in
             
             let r = generateItemModelsResultFromItemEntitiesResult(result: result)
             handler(r)
@@ -38,10 +38,10 @@ public struct AllItemListUseCaseImpl: ItemListUseCase {
 
 public struct UserItemListUseCaseImpl: ItemListUseCase {
     
-    let repository: UserItemRepository
+    let repository: UserItemListRepository
     let userId: String
     
-    public init(repository: UserItemRepository, userId: String) {
+    public init(repository: UserItemListRepository, userId: String) {
         self.repository = repository
         self.userId = userId
     }

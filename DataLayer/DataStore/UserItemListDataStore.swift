@@ -1,5 +1,5 @@
 //
-//  UserItemDataStore.swift
+//  UserItemListDataStore.swift
 //  CleanQiitaClient
 //
 //  Created by Takahiro Nishinobu on 2016/09/25.
@@ -10,11 +10,11 @@ import Foundation
 import APIKit
 import Result
 
-protocol UserItemDataStore {
+protocol UserItemListDataStore {
     func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void)
 }
 
-struct UserItemDataStoreNetworkImpl: UserItemDataStore {
+struct UserItemListDataStoreNetworkImpl: UserItemListDataStore {
     
     public func fetchUserItemList(page: Int?, perPage: Int?, userId: String, handler: @escaping (Result<GetUserItemListRequest.Response, SessionTaskError>) -> Void) {
         let request = GetUserItemListRequest(page: page, perPage: perPage, userId: userId)
@@ -23,10 +23,10 @@ struct UserItemDataStoreNetworkImpl: UserItemDataStore {
     
 }
 
-struct UserItemDataStoreFactory {
+struct UserItemListDataStoreFactory {
     
-    static func createUserItemDataStore() -> UserItemDataStore {
-        return UserItemDataStoreNetworkImpl()
+    static func createUserItemListDataStore() -> UserItemListDataStore {
+        return UserItemListDataStoreNetworkImpl()
     }
     
 }
