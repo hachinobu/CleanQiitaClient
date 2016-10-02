@@ -5,23 +5,25 @@ use_frameworks!
 abstract_target 'All' do
 
   pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit', :tag => '3.0.0-beta.2'
-  pod "PromiseKit", "~> 4.0"
-  pod 'ObjectMapper'
-  pod 'Kingfisher'
 
   target 'CleanQiitaClient' do
   end
 
   target 'DataLayer' do
+    pod 'ObjectMapper'
   end
 
   target 'DomainLayer' do
+    pod "PromiseKit", "~> 4.0"
   end
 
   target 'PresentationLayer' do
+    pod 'Kingfisher'
+    pod "PromiseKit", "~> 4.0"
   end
 
   target 'Networking' do
+    pod 'ObjectMapper'
   end
 
   target 'Utility' do
