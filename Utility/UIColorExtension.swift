@@ -10,8 +10,6 @@ import Foundation
 
 public extension UIColor {
     
-    static func qiitaMainColor() -> UIColor {
-        return UIColor(red: 85.0/255.0, green: 189.0/255.0, blue: 0.0, alpha: 1.0)
-    }
-    
+    @nonobjc static let qiitaMainColor: UIColor = UIColor(red: 85.0/255.0, green: 189.0/255.0, blue: 0.0, alpha: 1.0)
+        
 }

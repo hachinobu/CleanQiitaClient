@@ -13,7 +13,7 @@ extension AppDelegate {
     
     func configureStyling() {
         
-        let tintColor: UIColor = .qiitaMainColor()
+        let tintColor: UIColor = .qiitaMainColor
         
         window?.tintColor = tintColor
         

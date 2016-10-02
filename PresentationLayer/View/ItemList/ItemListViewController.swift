@@ -104,6 +104,7 @@ extension ItemListViewController: ItemListPresenterView {
             return
         }
         refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .qiitaMainColor
         refreshControl?.addTarget(self, action: .refreshAction, for: .valueChanged)
     }
     

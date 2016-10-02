@@ -82,7 +82,7 @@ extension ItemHeaderVM: ItemHeaderCellProtocol {
     
     func buttonColorInfo() -> (backgroundColor: UIColor, textColor: UIColor)? {
         if itemModel.hasStock {
-            return (.qiitaMainColor(), .white)
+            return (.qiitaMainColor, .white)
         }
         return (.white, .black)
     }
