@@ -9,24 +9,24 @@
 import Foundation
 import DomainLayer
 
-class ItemPresenterImplFromAllItem: ItemPresenter {
+public class ItemPresenterImplFromAllItem: ItemPresenter {
     
-    weak var view: ItemPresenterView?
+    weak public var view: ItemPresenterView?
     let useCase: ItemUseCase
     
     private var itemModel: ItemModel!
     
-    init(useCase: ItemUseCase) {
+    public init(useCase: ItemUseCase) {
         self.useCase = useCase
     }
     
-    func setupUI() {
+    public func setupUI() {
         view?.setupNavigation(title: "投稿")
         view?.setupTable()
         view?.setupRefreshControl()
     }
     
-    func refreshData() {
+    public func refreshData() {
         useCase.fetchItem { [weak self] result in
             guard let itemModel = result.value else {
                 return
@@ -36,11 +36,11 @@ class ItemPresenterImplFromAllItem: ItemPresenter {
         }
     }
     
-    func tappedUser(userId: String) {
+    public func tappedUser(userId: String) {
         view?.segueItemListOfSelectedUser(userId: userId)
     }
     
-    func tappedStock() {
+    public func tappedStock() {
         if itemModel.hasStock {
             deleteStock()
         } else {

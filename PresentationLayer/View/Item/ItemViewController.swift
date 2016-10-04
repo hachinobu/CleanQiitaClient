@@ -13,7 +13,7 @@ fileprivate extension Selector {
     static let refreshAction = #selector(ItemViewController.refreshData)
 }
 
-class ItemViewController: UITableViewController {
+public class ItemViewController: UITableViewController {
 
     private var presenter: ItemPresenter! {
         didSet {
@@ -31,18 +31,18 @@ class ItemViewController: UITableViewController {
     
     fileprivate var webViewHeight: CGFloat = 0.0
     
-    func injection(presenter: ItemPresenter, routing: ItemRouting) {
+    public func injection(presenter: ItemPresenter, routing: ItemRouting) {
         self.presenter = presenter
         self.routing = routing
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         presenter.setupUI()
         presenter.refreshData()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
@@ -53,18 +53,18 @@ class ItemViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override public func numberOfSections(in tableView: UITableView) -> Int {
         if itemSummaryVM == nil {
             return 0
         }
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemSummaryVM.tableRowCount()
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ItemHeaderCell
@@ -80,11 +80,11 @@ class ItemViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return fetchTableHeight(row: indexPath.row)
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    override public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return fetchTableHeight(row: indexPath.row)
     }
     
@@ -96,16 +96,16 @@ class ItemViewController: UITableViewController {
 
 extension ItemViewController: ItemPresenterView {
     
-    func setupNavigation(title: String) {
+    public func setupNavigation(title: String) {
         self.title = title
     }
     
-    func setupTable() {
+    public func setupTable() {
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    func setupRefreshControl() {
+    public func setupRefreshControl() {
         guard refreshControl == nil else {
             return
         }
@@ -114,11 +114,11 @@ extension ItemViewController: ItemPresenterView {
         refreshControl?.addTarget(self, action: .refreshAction, for: .valueChanged)
     }
     
-    func reloadView(itemSummaryVM: ItemSummaryProtocol) {
+    public func reloadView(itemSummaryVM: ItemSummaryProtocol) {
         self.itemSummaryVM = itemSummaryVM
     }
     
-    func segueItemListOfSelectedUser(userId: String) {
+    public func segueItemListOfSelectedUser(userId: String) {
         routing.segueItemList(userId: userId)
     }
     
@@ -127,7 +127,7 @@ extension ItemViewController: ItemPresenterView {
 //MARK: UIWebViewDelegate
 extension ItemViewController: UIWebViewDelegate {
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    public func webViewDidFinishLoad(_ webView: UIWebView) {
         let height = webView.scrollView.contentSize.height
         if webViewHeight == height {
             return

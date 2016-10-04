@@ -8,9 +8,9 @@
 
 import Foundation
 
-class ItemPresenterImplFromUserItem: ItemPresenterImplFromAllItem {
+public class ItemPresenterImplFromUserItem: ItemPresenterImplFromAllItem {
     
-    override func tappedUser(userId: String) {
+    override public func tappedUser(userId: String) {
         
     }
     

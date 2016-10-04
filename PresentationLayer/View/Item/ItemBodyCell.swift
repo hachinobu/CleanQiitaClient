@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ItemBodyCellProtocol {
+public protocol ItemBodyCellProtocol {
     func htmlBody() -> String
 }
 

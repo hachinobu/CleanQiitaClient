@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ItemPresenter {
+public protocol ItemPresenter {
     
     weak var view: ItemPresenterView? { get set }
     
@@ -19,7 +19,7 @@ protocol ItemPresenter {
     
 }
 
-protocol ItemPresenterView: class {
+public protocol ItemPresenterView: class {
     
     func setupNavigation(title: String)
     func setupTable()

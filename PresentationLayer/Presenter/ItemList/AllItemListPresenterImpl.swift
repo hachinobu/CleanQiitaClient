@@ -13,9 +13,9 @@ import Networking
 import APIKit
 import Result
 
-class AllItemListPresenterImpl: ItemListPresenter {
+public class AllItemListPresenterImpl: ItemListPresenter {
     
-    weak var view: ItemListPresenterView?
+    weak public var view: ItemListPresenterView?
     let useCase: ItemListUseCase
     
     private var currentPage: Int = 1
@@ -28,16 +28,16 @@ class AllItemListPresenterImpl: ItemListPresenter {
     }
     private var isFinishMoreLoad: Bool = false
     
-    init(useCase: ItemListUseCase) {
+    public init(useCase: ItemListUseCase) {
         self.useCase = useCase
     }
     
-    func setupUI() {
+    public func setupUI() {
         view?.setupNavigation(title: "全ての投稿")
         view?.setupRefreshControl()
     }
     
-    func refreshData() {
+    public func refreshData() {
         
         ImageCache.default.clearMemoryCache()
         
@@ -59,7 +59,7 @@ class AllItemListPresenterImpl: ItemListPresenter {
         }
     }
     
-    func fetchMorePageItem() {
+    public func fetchMorePageItem() {
         
         view?.startIndicator()
         let nextPage = currentPage + 1
@@ -78,7 +78,7 @@ class AllItemListPresenterImpl: ItemListPresenter {
         }
     }
     
-    func reachedBottom(index: Int, isAnimation: Bool) {
+    public func reachedBottom(index: Int, isAnimation: Bool) {
         let bottomIndex = listItemModels.count - 1
         guard bottomIndex == index && !isAnimation && !isFinishMoreLoad else {
             return
@@ -86,7 +86,7 @@ class AllItemListPresenterImpl: ItemListPresenter {
         fetchMorePageItem()
     }
     
-    func selectedItem(index: Int) {
+    public func selectedItem(index: Int) {
         guard listItemModels.count > index else {
             return
         }

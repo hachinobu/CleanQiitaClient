@@ -8,9 +8,9 @@
 
 import Foundation
 
-class UserItemListPresenterImpl: AllItemListPresenterImpl {
+public class UserItemListPresenterImpl: AllItemListPresenterImpl {
     
-    override func setupUI() {
+    override public func setupUI() {
         view?.setupNavigation(title: "ユーザー投稿一覧")
     }
     

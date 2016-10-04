@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-protocol ItemHeaderCellProtocol {
+public protocol ItemHeaderCellProtocol {
     func userId() -> String
     func displayTitle() -> String?
     func displayTag() -> String?

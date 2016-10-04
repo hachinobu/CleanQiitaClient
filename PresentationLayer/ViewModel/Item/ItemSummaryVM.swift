@@ -10,7 +10,7 @@ import Foundation
 import DomainLayer
 import Utility
 
-protocol ItemSummaryProtocol {
+public protocol ItemSummaryProtocol {
     func tableRowCount() -> Int
     func fetchItemHeaderVM() -> ItemHeaderCellProtocol
     func fetchItemBodyVM() -> ItemBodyCellProtocol
