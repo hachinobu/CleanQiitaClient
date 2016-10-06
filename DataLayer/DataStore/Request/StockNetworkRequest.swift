@@ -25,6 +25,10 @@ public struct GetItemStockersRequest: QiitaRequest {
         return "/api/v2/items/\(itemId)/stockers"
     }
     
+    public var queryParameters: [String: Any]? {
+        return ["per_page": 100]
+    }
+    
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserEntity> {
         guard
             let jsonArray = object as? [[String: Any]],
