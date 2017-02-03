@@ -4,7 +4,7 @@ use_frameworks!
 
 abstract_target 'All' do
 
-  pod 'APIKit', :git => 'https://github.com/ishkawa/APIKit', :tag => '3.0.0-beta.2'
+  pod 'APIKit', '~> 3.0'
 
   target 'CleanQiitaClient' do
   end
