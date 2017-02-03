@@ -52,7 +52,6 @@ public class ItemPresenterImplFromAllItem: ItemPresenter {
         useCase.putStock { [weak self] result in
             
             guard let weakSelf = self else {
-                print(result.error?.localizedDescription)
                 return
             }
             weakSelf.itemModel.updateHasStock(state: true)
@@ -64,7 +63,6 @@ public class ItemPresenterImplFromAllItem: ItemPresenter {
         useCase.deleteStock { [weak self] result in
             
             guard let weakSelf = self else {
-                print(result.error?.localizedDescription)
                 return
             }
             weakSelf.itemModel.updateHasStock(state: false)
