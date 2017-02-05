@@ -10,20 +10,17 @@ import Foundation
 import ObjectMapper
 
 public struct AccessTokenEntity {
-    public var clientId: String?
-    public var scopes: [String]?
-    public var token: String?
+    public let clientId: String?
+    public let scopes: [String]?
+    public let token: String?
 }
 
-extension AccessTokenEntity: Mappable {
+extension AccessTokenEntity: ImmutableMappable {
     
-    public init?(map: Map) {
-    }
-    
-    mutating public func mapping(map: Map) {
-        clientId <- map["client_id"]
-        scopes <- map["scopes"]
-        token <- map["token"]
+    public init(map: Map) throws {
+        clientId = try? map.value("client_id")
+        scopes = try? map.value("scopes")
+        token = try? map.value("token")
     }
     
 }

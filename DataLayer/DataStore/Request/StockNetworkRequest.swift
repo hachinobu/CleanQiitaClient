@@ -30,12 +30,10 @@ public struct GetItemStockersRequest: QiitaRequest {
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserEntity> {
-        guard
-            let jsonArray = object as? [[String: Any]],
-            let responseObject = Mapper<UserEntity>().mapArray(JSONArray: jsonArray) else {
-                throw ResponseError.unexpectedObject(object)
+        guard let jsonArray = object as? [[String: Any]] else {
+            throw ResponseError.unexpectedObject(object)
         }
-        return responseObject
+        return try Mapper<UserEntity>().mapArray(JSONArray: jsonArray)
     }
     
 }

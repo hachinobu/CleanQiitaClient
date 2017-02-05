@@ -48,6 +48,17 @@ public extension QiitaRequest {
     
 }
 
+public extension QiitaRequest where Response: ImmutableMappable {
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
+        guard let json = object as? [String: Any] else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try Response(JSON: json)
+    }
+    
+}
+
 public extension QiitaRequest where Response: Mappable {
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {

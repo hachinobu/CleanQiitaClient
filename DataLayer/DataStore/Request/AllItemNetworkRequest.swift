@@ -47,12 +47,18 @@ public struct GetAllItemListRequest: QiitaRequest {
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        guard
-            let jsonArray = object as? [[String: Any]],
-            let responseObject = Mapper<ItemEntity>().mapArray(JSONArray: jsonArray) else {
-                throw ResponseError.unexpectedObject(object)
+        guard let jsonArray = object as? [[String: Any]] else {
+            throw ResponseError.unexpectedObject(object)
         }
-        return responseObject
+        return try Mapper<ItemEntity>().mapArray(JSONArray: jsonArray)
     }
+    
+//    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+//        guard let jsonArray = object as? [[String: Any]],
+//            let responseObject = Array<ItemEntity>(JSONArray: jsonArray) else {
+//            throw ResponseError.unexpectedObject(object)
+//        }
+//        return responseObject
+//    }
     
 }

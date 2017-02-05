@@ -10,19 +10,15 @@ import Foundation
 import ObjectMapper
 
 public struct TagEntity {
-    public var name: String?
-    public var versions: [String]?
+    public let name: String?
+    public let versions: [String]?
 }
 
-extension TagEntity: Mappable {
+extension TagEntity: ImmutableMappable {
     
-    public init?(map: Map) {
-        
-    }
-    
-    mutating public func mapping(map: Map) {
-        name <- map["name"]
-        versions <- map["versions"]
+    public init(map: Map) throws {
+        name = try? map.value("name")
+        versions = try? map.value("versions")
     }
     
 }
