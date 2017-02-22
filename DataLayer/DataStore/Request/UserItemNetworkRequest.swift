@@ -48,11 +48,11 @@ public struct GetUserItemListRequest: QiitaRequest {
         return parameters
     }
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        guard let jsonArray = object as? [[String: Any]] else {
-            throw ResponseError.unexpectedObject(object)
-        }
-        return try Mapper<ItemEntity>().mapArray(JSONArray: jsonArray)
-    }
+//    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+//        guard let jsonArray = object as? [[String: Any]] else {
+//            throw ResponseError.unexpectedObject(object)
+//        }
+//        return try Mapper<ItemEntity>().mapArray(JSONArray: jsonArray)
+//    }
     
 }

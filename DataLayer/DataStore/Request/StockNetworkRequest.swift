@@ -29,12 +29,12 @@ public struct GetItemStockersRequest: QiitaRequest {
         return ["per_page": 100]
     }
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserEntity> {
-        guard let jsonArray = object as? [[String: Any]] else {
-            throw ResponseError.unexpectedObject(object)
-        }
-        return try Mapper<UserEntity>().mapArray(JSONArray: jsonArray)
-    }
+//    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserEntity> {
+//        guard let jsonArray = object as? [[String: Any]] else {
+//            throw ResponseError.unexpectedObject(object)
+//        }
+//        return try Mapper<UserEntity>().mapArray(JSONArray: jsonArray)
+//    }
     
 }
 

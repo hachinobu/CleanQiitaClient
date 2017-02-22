@@ -59,6 +59,18 @@ public extension QiitaRequest where Response: ImmutableMappable {
     
 }
 
+public extension QiitaRequest where Response: Sequence, Response.Iterator.Element: ImmutableMappable {
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
+        guard let jsonArray = object as? [[String: Any]] else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        let mapper = Mapper<Response.Iterator.Element>()
+        return try mapper.mapArray(JSONArray: jsonArray) as! Self.Response
+    }
+    
+}
+
 public extension QiitaRequest where Response: Mappable {
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
