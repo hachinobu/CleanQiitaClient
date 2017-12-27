@@ -72,11 +72,11 @@ class ItemHeaderCell: UITableViewCell {
         profileImageView.kf.setImage(with: resource, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
     }
     
-    func tappedStockButton(sender: AnyObject) {
+    @objc func tappedStockButton(sender: AnyObject) {
         presenter?.tappedStock()
     }
     
-    func tappedUserButton(sender: AnyObject) {
+    @objc func tappedUserButton(sender: AnyObject) {
         presenter?.tappedUser(userId: vm.userId())
     }
 

@@ -47,7 +47,7 @@ public class ItemViewController: UITableViewController {
         
     }
     
-    func refreshData() {
+    @objc func refreshData() {
         presenter.refreshData()
     }
 

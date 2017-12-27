@@ -46,7 +46,7 @@ public class ItemListViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func refreshData() {
+    @objc func refreshData() {
         presenter.refreshData()
     }
     

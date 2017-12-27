@@ -18,8 +18,8 @@ extension AppDelegate {
         window?.tintColor = tintColor
         
         UINavigationBar.appearance().titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 18)
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)
         ]
         
         UINavigationBar.appearance().barTintColor = tintColor
