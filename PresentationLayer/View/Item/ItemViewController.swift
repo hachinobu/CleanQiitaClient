@@ -55,10 +55,7 @@ public class ItemViewController: UITableViewController {
     // MARK: - Table view data source
 
     override public func numberOfSections(in tableView: UITableView) -> Int {
-        if itemSummaryVM == nil {
-            return 0
-        }
-        return 1
+        return itemSummaryVM == nil ? 0 : 1
     }
 
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
