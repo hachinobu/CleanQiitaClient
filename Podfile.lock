@@ -1,7 +1,7 @@
 PODS:
   - APIKit (3.1.1):
     - Result (~> 3.0)
-  - Kingfisher (3.3.3)
+  - Nuke (6.0)
   - PromiseKit (4.1.7):
     - PromiseKit/Foundation (= 4.1.7)
     - PromiseKit/QuartzCore (= 4.1.7)
@@ -17,15 +17,15 @@ PODS:
 
 DEPENDENCIES:
   - APIKit (~> 3.0)
-  - Kingfisher
+  - Nuke (~> 6.0)
   - PromiseKit (~> 4.0)
 
 SPEC CHECKSUMS:
   APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
-  Kingfisher: 893215a42e5c2164e916f69463c68003092b104c
+  Nuke: d83812262734dad51e3c498cb1c4f7923f2b78c6
   PromiseKit: 779f2e41faf62d854e7593026ddbcb0bb5c5002d
   Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
 
-PODFILE CHECKSUM: 5e6a523c1267b5689306e5ffac6d74e01a0fc673
+PODFILE CHECKSUM: a3695063612d4857d10e8917524c57f8a4534fd2
 
 COCOAPODS: 1.4.0.rc.1

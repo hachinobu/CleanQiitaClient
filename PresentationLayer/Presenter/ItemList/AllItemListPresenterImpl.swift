@@ -8,10 +8,10 @@
 
 import Foundation
 import DomainLayer
-import Kingfisher
 import Networking
 import APIKit
 import Result
+import Nuke
 
 public class AllItemListPresenterImpl: ItemListPresenter {
     
@@ -39,7 +39,7 @@ public class AllItemListPresenterImpl: ItemListPresenter {
     
     public func refreshData() {
         
-        ImageCache.default.clearMemoryCache()
+        Cache.shared.removeAll()
         
         let firstPage = 1
         useCase.fetchItemList(page: firstPage, perPage: perPage) { result in

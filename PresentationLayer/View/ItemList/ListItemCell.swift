@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import Nuke
 
 public protocol ListItemDisplayProtocol {
     func displayPostUserInfo() -> String?
@@ -39,9 +39,8 @@ class ListItemCell: UITableViewCell {
         guard let imageURL = displayVM.fetchProfileImageURL() else {
             return
         }
-        let resource = ImageResource(downloadURL: imageURL, cacheKey: displayVM.userName())
-        profileImageView.kf.indicatorType = .activity
-        profileImageView.kf.setImage(with: resource, placeholder: nil, options: [.transition(ImageTransition.fade(1)), .cacheMemoryOnly], progressBlock: nil, completionHandler: nil)
+        profileImageView.image = nil
+        Manager.shared.loadImage(with: imageURL, into: profileImageView)
     }
 
 }

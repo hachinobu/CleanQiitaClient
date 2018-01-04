@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import Nuke
 
 public protocol ItemHeaderCellProtocol {
     func userId() -> String
@@ -67,10 +67,8 @@ public class ItemHeaderCell: UITableViewCell {
         guard let imageURL = vm.userImageURL() else {
             return
         }
-        
-        let resource = ImageResource(downloadURL: imageURL, cacheKey: vm.userName())
-        profileImageView.kf.indicatorType = .activity
-        profileImageView.kf.setImage(with: resource, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
+        profileImageView.image = nil
+        Manager.shared.loadImage(with: imageURL, into: profileImageView)
     }
     
     func tappedStockButton(sender: AnyObject) {
