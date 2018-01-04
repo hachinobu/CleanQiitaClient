@@ -7,9 +7,10 @@
 //
 
 import Foundation
-import PromiseKit
 import APIKit
 import DataLayer
+import Hydra
+
 //https://github.com/Alamofire/Alamofire/issues/1271#issuecomment-224517739
 //https://github.com/antitypical/Result/issues/77
 import enum Result.Result
@@ -48,15 +49,13 @@ public struct AllItemUseCaseImpl: ItemUseCase {
     public func fetchItem(handler: @escaping (Result<ItemModel, SessionTaskError>) -> Void) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        firstly {
-            when(fulfilled: generateStockersPromise(), generateItemEntityPromise(), generateStockStatePromise())
-        }.then { (stockers, item, hasStock) -> Void in
+        Promise<Void>.zip(a: generateStockersPromise(), b: generateItemEntityPromise(), c: generateStockStatePromise()).then { (stockers, item, hasStock) in
             let itemModel = ItemModelTranslator().translate((itemEntity: item, stockers: stockers, hasStock: hasStock))
-            handler(Result.success(itemModel))
-        }.always {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }.catch { error in
-            handler(Result.failure(error as! SessionTaskError))
+            handler(.success(itemModel))
+            }.catch { error in
+                handler(.failure(error as! SessionTaskError))
+            }.always {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
         
     }
@@ -67,14 +66,14 @@ extension AllItemUseCaseImpl {
     
     fileprivate func generateStockersPromise() -> Promise<GetItemStockersRequest.Response> {
         
-        return Promise<GetItemStockersRequest.Response> { (fulfill, reject) in
+        return Promise<GetItemStockersRequest.Response> { resolve, reject, _ in
             
             self.stockersRepository.fetchStockers(itemId: self.itemId) { result in
                 guard let value = result.value else {
                     reject(result.error!)
                     return
                 }
-                fulfill(value)
+                resolve(value)
             }
             
         }
@@ -83,13 +82,13 @@ extension AllItemUseCaseImpl {
     
     fileprivate func generateStockStatePromise() -> Promise<GetHasStockRequest.Response> {
         
-        return Promise<GetHasStockRequest.Response> { (fulfill, reject) in
+        return Promise<GetHasStockRequest.Response> { resolve, reject, _ in
             self.stockItemRepository.hasStock(itemId: self.itemId) { result in
                 guard let value = result.value else {
                     reject(result.error!)
                     return
                 }
-                fulfill(value)
+                resolve(value)
             }
         }
         
@@ -97,13 +96,13 @@ extension AllItemUseCaseImpl {
     
     fileprivate func generateItemEntityPromise() -> Promise<GetItemNetworkRequest.Response> {
         
-        return Promise<GetItemNetworkRequest.Response> { (fulfill, reject) in
+        return Promise<GetItemNetworkRequest.Response> { resolve, reject, _ in
             self.itemRepository.fetchItemDetail(itemId: self.itemId) { result in
                 guard let value = result.value else {
                     reject(result.error!)
                     return
                 }
-                fulfill(value)
+                resolve(value)
             }
         }
         
