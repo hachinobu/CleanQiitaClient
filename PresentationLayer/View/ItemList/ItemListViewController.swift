@@ -14,6 +14,7 @@ fileprivate extension Selector {
     static let refreshAction = #selector(ItemListViewController.refreshData)
 }
 
+@objcMembers
 public class ItemListViewController: UITableViewController {
 
     @IBOutlet weak var indicatorCircleView: IndicatorCircleView!
@@ -46,7 +47,7 @@ public class ItemListViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func refreshData() {
+    func refreshData() {
         presenter.refreshData()
     }
     

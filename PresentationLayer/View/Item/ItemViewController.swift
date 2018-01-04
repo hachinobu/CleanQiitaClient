@@ -13,6 +13,7 @@ fileprivate extension Selector {
     static let refreshAction = #selector(ItemViewController.refreshData)
 }
 
+@objcMembers
 public class ItemViewController: UITableViewController {
 
     private var presenter: ItemPresenter! {
@@ -47,7 +48,7 @@ public class ItemViewController: UITableViewController {
         
     }
     
-    @objc func refreshData() {
+    func refreshData() {
         presenter.refreshData()
     }
 

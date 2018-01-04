@@ -25,7 +25,8 @@ fileprivate extension Selector {
     static let tappedStock = #selector(ItemHeaderCell.tappedStockButton(sender:))
 }
 
-class ItemHeaderCell: UITableViewCell {
+@objcMembers
+public class ItemHeaderCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
@@ -41,7 +42,7 @@ class ItemHeaderCell: UITableViewCell {
     }
     var presenter: ItemPresenter?
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         stockButton.layer.cornerRadius = 4.0
         userButton.addTarget(self, action: .tappedUser, for: .touchUpInside)
@@ -72,11 +73,11 @@ class ItemHeaderCell: UITableViewCell {
         profileImageView.kf.setImage(with: resource, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
     }
     
-    @objc func tappedStockButton(sender: AnyObject) {
+    func tappedStockButton(sender: AnyObject) {
         presenter?.tappedStock()
     }
     
-    @objc func tappedUserButton(sender: AnyObject) {
+    func tappedUserButton(sender: AnyObject) {
         presenter?.tappedUser(userId: vm.userId())
     }
 
