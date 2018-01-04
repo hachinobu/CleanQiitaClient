@@ -5,10 +5,9 @@ use_frameworks!
 abstract_target 'All' do
 
   pod 'APIKit', '~> 3.0'
-
-    pod 'ObjectMapper'
-    pod "PromiseKit", "~> 4.0"
-    pod 'Kingfisher'
+  pod "PromiseKit", "~> 4.0"
+  pod 'Kingfisher'
+  
   target 'CleanQiitaClient' do
   end
 

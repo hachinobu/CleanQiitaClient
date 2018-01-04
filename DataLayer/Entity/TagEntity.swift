@@ -7,18 +7,14 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public struct TagEntity {
+public struct TagEntity: Codable {
     public let name: String?
     public let versions: [String]?
-}
-
-extension TagEntity: ImmutableMappable {
     
-    public init(map: Map) throws {
-        name = try? map.value("name")
-        versions = try? map.value("versions")
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case versions
     }
     
 }

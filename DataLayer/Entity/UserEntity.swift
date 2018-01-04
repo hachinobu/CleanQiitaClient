@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public struct UserEntity {
+public struct UserEntity: Codable {
     public let description: String?
     public let facebookId: String?
     public let followeesCount: Int?
@@ -25,52 +24,23 @@ public struct UserEntity {
     public let profileImageUrl: String?
     public let twitterScreenName: String?
     public let websiteUrl: String?
-}
-
-extension UserEntity: ImmutableMappable {
     
-    public init(map: Map) throws {
-        description = try? map.value("description")
-        facebookId = try? map.value("facebook_id")
-        followeesCount = try? map.value("followees_count")
-        followersCount = try? map.value("followers_count")
-        githubLoginName = try? map.value("github_login_name")
-        id = try map.value("id")
-        itemsCount = try? map.value("items_count")
-        linkedinId = try? map.value("linkedin_id")
-        location = try? map.value("location")
-        name = try? map.value("name")
-        organization = try? map.value("organization")
-        permanentId = try? map.value("permanent_id")
-        profileImageUrl = try? map.value("profile_image_url")
-        twitterScreenName = try? map.value("twitter_screen_name")
-        websiteUrl = try? map.value("website_url")
+    private enum CodingKeys: String, CodingKey {
+        case description
+        case facebookId = "facebook_id"
+        case followeesCount = "followees_count"
+        case followersCount = "followers_count"
+        case githubLoginName = "github_login_name"
+        case id
+        case itemsCount = "items_count"
+        case linkedinId = "linkedin_id"
+        case location
+        case name
+        case organization
+        case permanentId = "permanent_id"
+        case profileImageUrl = "profile_image_url"
+        case twitterScreenName = "twitter_screen_name"
+        case websiteUrl = "website_url"
     }
     
 }
-
-//extension UserEntity: Mappable {
-//    
-//    public init?(map: Map) {
-//        
-//    }
-//    
-//    mutating public func mapping(map: Map) {
-//        description <- map["description"]
-//        facebookId <- map["facebook_id"]
-//        followeesCount <- map["followees_count"]
-//        followersCount <- map["followers_count"]
-//        githubLoginName <- map["github_login_name"]
-//        id <- map["id"]
-//        itemsCount <- map["items_count"]
-//        linkedinId <- map["linkedin_id"]
-//        location <- map["location"]
-//        name <- map["name"]
-//        organization <- map["organization"]
-//        permanentId <- map["permanent_id"]
-//        profileImageUrl <- map["profile_image_url"]
-//        twitterScreenName <- map["twitter_screen_name"]
-//        websiteUrl <- map["website_url"]
-//    }
-//    
-//}

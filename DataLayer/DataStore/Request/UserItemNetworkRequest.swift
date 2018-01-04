@@ -9,7 +9,6 @@
 import Foundation
 import Networking
 import APIKit
-import ObjectMapper
 
 public struct GetUserItemListRequest: QiitaRequest {
     
@@ -47,12 +46,5 @@ public struct GetUserItemListRequest: QiitaRequest {
         
         return parameters
     }
-    
-//    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-//        guard let jsonArray = object as? [[String: Any]] else {
-//            throw ResponseError.unexpectedObject(object)
-//        }
-//        return try Mapper<ItemEntity>().mapArray(JSONArray: jsonArray)
-//    }
     
 }

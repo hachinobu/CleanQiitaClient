@@ -8,7 +8,6 @@
 
 import Foundation
 import APIKit
-import ObjectMapper
 import Networking
 
 public struct GetItemStockersRequest: QiitaRequest {
@@ -28,13 +27,6 @@ public struct GetItemStockersRequest: QiitaRequest {
     public var queryParameters: [String: Any]? {
         return ["per_page": 100]
     }
-    
-//    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserEntity> {
-//        guard let jsonArray = object as? [[String: Any]] else {
-//            throw ResponseError.unexpectedObject(object)
-//        }
-//        return try Mapper<UserEntity>().mapArray(JSONArray: jsonArray)
-//    }
     
 }
 

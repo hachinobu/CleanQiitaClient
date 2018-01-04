@@ -8,7 +8,6 @@
 
 import Foundation
 import APIKit
-import ObjectMapper
 import Utility
 
 public struct QiitaError: Error {
@@ -48,36 +47,30 @@ public extension QiitaRequest {
     
 }
 
-public extension QiitaRequest where Response: ImmutableMappable {
+public extension QiitaRequest where Response: Codable {
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
-        guard let json = object as? [String: Any] else {
+    public var dataParser: DataParser {
+        return CodableParser()
+    }
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try Response(JSON: json)
+        let decoder = JSONDecoder()
+        return try decoder.decode(Response.self, from: data)
     }
     
 }
 
-public extension QiitaRequest where Response: Sequence, Response.Iterator.Element: ImmutableMappable {
+public extension QiitaRequest where Response: Codable, Response: Sequence, Response.Element: Codable {
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
-        guard let jsonArray = object as? [[String: Any]] else {
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        let mapper = Mapper<Response.Iterator.Element>()
-        return try mapper.mapArray(JSONArray: jsonArray) as! Self.Response
-    }
-    
-}
-
-public extension QiitaRequest where Response: Mappable {
-    
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
-        guard let json = object as? [String: Any], let responseObject = Mapper<Response>().map(JSON: json) else {
-            throw ResponseError.unexpectedObject(object)
-        }
-        return responseObject
+        let decoder = JSONDecoder()
+        return try decoder.decode(Response.self, from: data)
     }
     
 }
@@ -89,3 +82,14 @@ public extension QiitaRequest where Response == Void {
     }
     
 }
+
+private class CodableParser: DataParser {
+    public var contentType: String? {
+        return "application/json"
+    }
+    
+    public func parse(data: Data) throws -> Any {
+        return data
+    }
+}
+
